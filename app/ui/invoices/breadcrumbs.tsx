@@ -10,7 +10,7 @@ interface Breadcrumb {
 
 export default function Breadcrumbs({
   breadcrumbs,
-}: {
+}: {  
   breadcrumbs: Breadcrumb[];
 }) {
   return (
