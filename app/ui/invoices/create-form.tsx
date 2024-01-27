@@ -120,7 +120,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
               </div>
             </div>
           </div>
-          <div aria-describedby='status-error' aria-live='polite'>
+          <div aria-describedby='status-error' aria-live='polite' aria-atomic={true}>
             {state.errors?.status && state.errors?.status.map((error: string) => (
               <p className='mt-3 text-sm text-red-500'>
                 {error}
