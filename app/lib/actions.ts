@@ -7,6 +7,15 @@ import { redirect } from 'next/navigation';
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
 
+export type State = {
+  errors?: {
+    customerId?: string[];
+    amount?: string[];
+    status?: string[];
+  };
+  message?: string | null;
+}
+
 export async function authenticate(
   prevState: string | undefined,
   formData: FormData,
@@ -22,7 +31,7 @@ export async function authenticate(
           return 'Something went wrong.'
       }
     }
-    throw error;
+    throw error
   }
 }
 
@@ -39,15 +48,6 @@ const FormSchema = z.object({
   }),
   date: z.string(),
 })
-
-export type State = {
-  errors?: {
-    customerId?: string[];
-    amount?: string[];
-    status?: string[];
-  };
-  message?: string | null;
-}
 
 const CreateInvoice = FormSchema.omit({ id: true, date: true })
 const UpdateInvoice = FormSchema.omit({ id: true, date: true })
